@@ -46,7 +46,7 @@ echo styleTitreNiveau1($titleH1, COLOR_TITRE_PENSIONNAIRES); ?>
                             <span class="badge bg-warning m-1 p-2 d-none d-sm-inline"><?= ($animal['sexe']) ? $caractere['libelle_caractere_m'] : $caractere['libelle_caractere_f'] ?></span>
                         <?php endforeach; ?>
 
-                        <a href="./animal.php?idAnimal=<?= $animal['id_animal'] ?>" class="btn btn-primary my-3">Visitez ma page</a>
+                        <a href="?page=animal&idAnimal=<?= $animal['id_animal'] ?>" class="btn btn-primary my-3">Visitez ma page</a>
                     </div>
                 </div>
             </div>

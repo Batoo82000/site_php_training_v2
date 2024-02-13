@@ -15,6 +15,7 @@ if(isset($_GET['page']) && !empty($_GET['page'])){
     if($_GET['page'] === 'contact') getContact();
     if($_GET['page'] === 'don') getDon();
     if($_GET['page'] === 'mentions') getMentions();
+    if($_GET['page'] === 'animal') getAnimal();
 
 } else {
     getAccueil();

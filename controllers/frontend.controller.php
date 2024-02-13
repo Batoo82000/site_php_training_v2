@@ -7,7 +7,6 @@ function getPensionnaires()
     $title = "Page de pensionnaires";
     $description = "c'est la page des pensionnaires";
 
-    $_GET['idstatus'] = 1;
     $animaux = getAnimalFromStatus($_GET['idstatus']);
 
     $titleH1 = "";
@@ -28,6 +27,17 @@ function getPensionnaires()
     }
 
     require_once "views/front/pensionnaires.view.php";
+}
+
+function getAnimal() {
+    
+    $animal = getAnimalFromIdAnimalBd($_GET['idAnimal']);
+    $title = "Page de ".$animal['nom_animal'];
+    $description = "Page de ".$animal['nom_animal'];
+    $images = getImagesFromAnimal($_GET['idAnimal']);
+    $caracteres = getCaracteresAnimals($_GET['idAnimal']);
+
+    require_once "views/front/animal.view.php";
 }
 
 function getAccueil()
