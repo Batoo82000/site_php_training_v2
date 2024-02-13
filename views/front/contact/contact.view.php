@@ -1,8 +1,6 @@
-
-<?php include '../Commons/header.php'; ?>
-
-
-<?= styleTitreNiveau1("Contact", COLOR_TITRE_CONTACTS) ?>
+<?php
+ob_start();
+echo styleTitreNiveau1("Contact", COLOR_TITRE_CONTACTS) ?>
 
 
 <div class="row g-0 ">
@@ -75,4 +73,7 @@ if(isset($_POST['nom']) && !empty($_POST['nom']) &&
 }
 ;?>
 
-<?php include '../Commons/footer.php';?>
+<?php
+$content = ob_get_clean();
+require "views/template.php"
+?>

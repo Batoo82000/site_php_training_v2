@@ -1,8 +1,6 @@
-
-<?php include '../Commons/header.php'; ?>
-
-
-<?= styleTitreNiveau1("Les plantes toxiques", COLOR_TITRE_CONSEILS) ?>
+<?php
+ob_start();
+echo styleTitreNiveau1("Les plantes toxiques", COLOR_TITRE_CONSEILS) ?>
 
 
 <div class="row g-0 ">
@@ -13,4 +11,7 @@
 
 </div>
 
-<?php include '../Commons/footer.php';?>
+<?php
+$content = ob_get_clean();
+require "views/template.php"
+?>

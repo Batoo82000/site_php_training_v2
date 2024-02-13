@@ -1,5 +1,6 @@
-<?php include '../Commons/header.php'; ?>
-<?= styleTitreNiveau1("Ils ont besoin de vous !", "perso_ColorRoseMenu") ?>
+<?php 
+ob_start();
+echo styleTitreNiveau1("Ils ont besoin de vous !", "perso_ColorRoseMenu") ?>
 <!-- section carousel -->
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
@@ -12,13 +13,13 @@
         <div class="carousel-item active">
             <div class="row g-0 border rounded overflow-hidden mb-4 perso_bgRose">
                 <div class="col-12 col-md-auto text-center">
-                    <img src="../../sources/images/animaux/Chats/Framboise/Framboise.jpg" alt="Framboise" style='height:250px'>
+                    <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="framboise" style='height:250px'>
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="perso_ColorRoseMenu perso_policeTitre perso_textShadow">Framboise</h3>
+                    <h3 class="perso_ColorRoseMenu perso_policeTitre perso_textShadow">framboise</h3>
                     <div class="text-muted mb-1">02/2019</div>
                     <p class="mb-auto">
-                        Description de Framboise
+                        Description de framboise
                     </p>
                     <a href="" class="btn btn-primary">
                         Visitez ma page
@@ -31,13 +32,13 @@
         <div class="carousel-item">
             <div class="row g-0 border rounded overflow-hidden mb-4 perso_bgRose">
                 <div class="col-12 col-md-auto text-center">
-                    <img src="../../sources/images/animaux/Chats/Framboise/Framboise.jpg" alt="Framboise" style='height:250px'>
+                    <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="framboise" style='height:250px'>
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="perso_ColorRoseMenu perso_policeTitre perso_textShadow">Framboise</h3>
+                    <h3 class="perso_ColorRoseMenu perso_policeTitre perso_textShadow">framboise</h3>
                     <div class="text-muted mb-1">02/2019</div>
                     <p class="mb-auto">
-                        Description de Framboise
+                        Description de framboise
                     </p>
                     <a href="" class="btn btn-primary">
                         Visitez ma page
@@ -54,13 +55,13 @@
 <div class="row">
     <div class="col-6 mt-3">
         <?php
-        $txt = "<img src='../../sources/images/Autres/icones/journal.png' alt='logo news'>
+        $txt = "<img src='public/sources/images/Autres/icones/journal.png' alt='logo news'>
         Nouvelles des adoptés";
         echo styleTitreNiveau2($txt, COLOR_TITRE_ACTUS) ?>
     </div>
     <div class="col-6 mt-3">
     <?php
-        $txt = "<img src='../../sources/images/Autres/icones/action.png' alt='logo news'>
+        $txt = "<img src='public/sources/images/Autres/icones/action.png' alt='logo news'>
         Evènements et actions";
         echo styleTitreNiveau2($txt, COLOR_TITRE_PENSIONNAIRES) ?>
     </div>
@@ -71,7 +72,7 @@
     <div class="col-6">
         <div class="row g-0 border rounded mb-4">
             <div class="col-auto d-none d-lg-block">
-                <img src="../../sources/images/animaux/Chats/Framboise/Framboise.jpg" alt="Framboise" style='height:150px'>
+                <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="framboise" style='height:150px'>
             </div>
             <div class="col p-3 d-flex flex-column position-static perso_bgVert">
                 <h3 class="mb-0 perso_ColorVertMenu perso_textShadow perso_policeTitre">Doyenne Chipie</h3>
@@ -85,7 +86,7 @@
     <div class="col-6">
         <div class="row g-0 border rounded mb-4">
             <div class="col-auto d-none d-lg-block">
-                <img src="../../sources/images/animaux/Chats/Framboise/Framboise.jpg " alt="Framboise" style='height:150px'>
+                <img src="public/sources/images/animaux/chat/framboise/framboise.jpg " alt="framboise" style='height:150px'>
             </div>
             <div class="col p-3 d-flex flex-column position-static perso_bgOrange">
                 <h3 class="mb-0 perso_ColorOrangeMenu perso_textShadow perso_policeTitre">Doyenne Chipie</h3>
@@ -98,4 +99,6 @@
     </div>
 
 
-    <?php include '../Commons/footer.php'; ?>
+<?php $content = ob_get_clean();
+require "views/template.php"
+?>

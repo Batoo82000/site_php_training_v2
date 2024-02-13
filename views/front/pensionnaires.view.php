@@ -1,8 +1,7 @@
-<?php 
-include '../Commons/header.php'; 
-?>
+<?php
+ob_start();
 
-<?= styleTitreNiveau1($titleH1, COLOR_TITRE_PENSIONNAIRES); ?>
+echo styleTitreNiveau1($titleH1, COLOR_TITRE_PENSIONNAIRES); ?>
 
 
 <div class="row g-0">
@@ -11,7 +10,7 @@ include '../Commons/header.php';
         <div class="col-12 col-lg-6">
             <div class="row border border-dark rounded-3 m-2 align-items-center <?= ($animal['sexe']) ? "perso_bgVert" : "perso_bgRose"?>" style="height: 200px;">
                 <div class="col p-2 center">
-                    <img src="../../sources/images/animaux/<?= $animal['type_animal'] ?>/<?= $animal['image']['url_image'] ?>" class="img-thumbnail" alt="<?= $animal['image']['libelle_image'] ?>" style="max-height: 180px">
+                    <img src="public/sources/images/animaux/<?= $animal['type_animal'] ?>/<?= $animal['image']['url_image'] ?>" class="img-thumbnail" alt="<?= $animal['image']['libelle_image'] ?>" style="max-height: 180px">
                 </div>
 
                 <?php
@@ -32,9 +31,9 @@ include '../Commons/header.php';
                 ?>
 
                 <div class="col-2 border-start border-end text-center border-dark">
-                    <img src="../../sources/images/Autres/icones/<?= $iconeChien ?>" class="img-fluid m-1" alt="<?= $iconeChien ?>" style="width: 50px">
-                    <img src="../../sources/images/Autres/icones/<?= $iconeChat ?>" class="img-fluid m-1" alt="<?= $iconeChien ?>" style="width: 50px">
-                    <img src="../../sources/images/Autres/icones/<?= $iconeBaby ?>" class="img-fluid m-1" alt="<?= $iconeChien ?>" style="width: 50px">
+                    <img src="public/sources/images/Autres/icones/<?= $iconeChien ?>" class="img-fluid m-1" alt="<?= $iconeChien ?>" style="width: 50px">
+                    <img src="public/sources/images/Autres/icones/<?= $iconeChat ?>" class="img-fluid m-1" alt="<?= $iconeChien ?>" style="width: 50px">
+                    <img src="public/sources/images/Autres/icones/<?= $iconeBaby ?>" class="img-fluid m-1" alt="<?= $iconeChien ?>" style="width: 50px">
                 </div>
                 <div class="col-6 text-center">
                     <div class="perso_policeTitre perso_Size20 mb-3"><?= $animal['nom_animal'] ?></div>
@@ -56,7 +55,7 @@ include '../Commons/header.php';
     <?php endforeach; ?>
 </div>
 
-
-
-
-<?php include '../Commons/footer.php'; ?>
+<?php
+$content = ob_get_clean();
+require "views/template.php"
+?>
