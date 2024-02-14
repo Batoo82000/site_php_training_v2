@@ -11,5 +11,5 @@ echo styleTitreNiveau1("Donnations", COLOR_TITRE_CONTACTS) ?>
 </div>
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

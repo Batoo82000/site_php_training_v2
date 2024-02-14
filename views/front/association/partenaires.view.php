@@ -21,5 +21,5 @@ echo styleTitreNiveau1("Les partenaires", COLOR_TITRE_ASSO);
 
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

@@ -14,5 +14,5 @@ echo styleTitreNiveau1("Le chocolat", COLOR_TITRE_CONSEILS)
 
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

@@ -12,5 +12,5 @@ echo styleTitreNiveau1("La température", COLOR_TITRE_CONSEILS) ?>
 </div>
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

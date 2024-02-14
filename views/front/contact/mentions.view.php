@@ -10,5 +10,5 @@ echo styleTitreNiveau1("Mentions légales", COLOR_TITRE_CONTACTS) ?>
 </div>
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

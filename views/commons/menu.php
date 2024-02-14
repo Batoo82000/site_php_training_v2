@@ -31,9 +31,8 @@
                         Actus
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorVertMenu" href="../Global/actus.php">Nouvelles des adoptés</a></li>
+                        <li><a class="dropdown-item perso_ColorVertMenu" href="?page=actus">Nouvelles des adoptés</a></li>
                         <li><a class="dropdown-item perso_ColorVertMenu" href="#">Evènements</a></li>
-                        <li><a class="dropdown-item perso_ColorVertMenu" href="#">Something else here</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

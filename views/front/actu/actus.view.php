@@ -1,7 +1,6 @@
-<?php include '../Commons/header.php'; ?>
-
-
-<?= styleTitreNiveau1("Actus", COLOR_TITRE_ACTUS) ?>
+<?php
+ob_start();
+echo styleTitreNiveau1("Actus", COLOR_TITRE_ACTUS) ?>
 
 <?php
 echo styleTitrePost("Posté le : <span class='".COLOR_TITRE_ACTUS."'>05/2019</span> par <span class='".COLOR_TITRE_ACTUS."'> Framboise</span>");
@@ -9,7 +8,7 @@ echo styleTitrePost("Posté le : <span class='".COLOR_TITRE_ACTUS."'>05/2019</sp
 
 <div class="row g-0 align-items-center" style="min-height: 300px">
     <div class="col-12 col-md-3 text-center">
-        <img src="../../sources/images/animaux/Chats/Framboise/Framboise.jpg" alt="Framboise" style="max-height: 280px;">
+        <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="Framboise" style="max-height: 280px;">
     </div>
     <div class="col-12 col-md-9">
         <p>
@@ -22,7 +21,7 @@ echo styleTitrePost("Posté le : <span class='".COLOR_TITRE_ACTUS."'>05/2019</sp
 </div>
 <div class="row g-0 align-items-center" style="min-height: 300px">
     <div class="col-12 col-md-3 text-center">
-        <img src="../../sources/images/animaux/Chats/Framboise/Framboise.jpg" alt="Framboise" style="max-height: 280px;">
+        <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="Framboise" style="max-height: 280px;">
     </div>
     <div class="col-12 col-md-9">
         <p>
@@ -36,4 +35,7 @@ echo styleTitrePost("Posté le : <span class='".COLOR_TITRE_ACTUS."'>05/2019</sp
 
 
 
-<?php include '../Commons/footer.php';?>
+<?php
+$content = ob_get_clean();
+require "views/commons/template.php"
+?>

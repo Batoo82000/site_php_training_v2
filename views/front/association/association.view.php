@@ -36,7 +36,7 @@ echo styleTitreNiveau1("Association Nos Amis - Nos Animaux", COLOR_TITRE_ASSO);
     </div>
 </div>
 
-<?php 
+<?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

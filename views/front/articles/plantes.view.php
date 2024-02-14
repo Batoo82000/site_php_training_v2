@@ -13,5 +13,5 @@ echo styleTitreNiveau1("Les plantes toxiques", COLOR_TITRE_CONSEILS) ?>
 
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

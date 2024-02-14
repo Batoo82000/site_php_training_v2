@@ -91,5 +91,5 @@ echo styleTitreNiveau1($animal['nom_animal'], COLOR_TITRE_PENSIONNAIRES) ?>
 
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

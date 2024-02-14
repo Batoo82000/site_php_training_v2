@@ -100,5 +100,5 @@ echo styleTitreNiveau1("Ils ont besoin de vous !", "perso_ColorRoseMenu") ?>
 
 
 <?php $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

@@ -57,5 +57,5 @@ echo styleTitreNiveau1($titleH1, COLOR_TITRE_PENSIONNAIRES); ?>
 
 <?php
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php"
 ?>

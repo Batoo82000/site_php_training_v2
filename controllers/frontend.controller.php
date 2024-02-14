@@ -2,7 +2,7 @@
 require_once "public/utile/formatage.php";
 require_once 'models/animal.dao.php';
 require_once 'config/config.php';
-function getPensionnaires()
+function getPagePensionnaires()
 {
     $title = "Page de pensionnaires";
     $description = "c'est la page des pensionnaires";
@@ -29,7 +29,7 @@ function getPensionnaires()
     require_once "views/front/pensionnaires.view.php";
 }
 
-function getAnimal() {
+function getPageAnimal() {
     
     $animal = getAnimalFromIdAnimalBd($_GET['idAnimal']);
     $title = "Page de ".$animal['nom_animal'];
@@ -40,80 +40,87 @@ function getAnimal() {
     require_once "views/front/animal.view.php";
 }
 
-function getAccueil()
+function getPageAccueil()
 {
     $title = "Page d'accueil";
     $description = "Nos amis, nos animaux";
 
     require_once "views/front/accueil.view.php";
 }
-function getAssociation()
+function getPageAssociation()
 {
     $title = "Notre association";
     $description = "Page décrivant notre association";
 
     require_once "views/front/association/association.view.php";
 }
-function getPartenaires()
+function getPagePartenaires()
 {
     $title = "Nos partenaires";
     $description = "Page listant nos partenaires";
 
     require_once "views/front/association/partenaires.view.php";
 }
-function getChocolat()
+function getPageChocolat()
 {
     $title = "Le chocolat";
     $description = "Le chocolat et ces effets sur nos animaux";
 
     require_once "views/front/articles/chocolat.view.php";
 }
-function getEducateur()
+function getPageEducateur()
 {
     $title = "Les éducateurs";
     $description = "Page listant les éducateurs canin";
 
     require_once "views/front/articles/educateur.view.php";
 }
-function getPlantes()
+function getPagePlantes()
 {
     $title = "Les plantes";
     $description = "Page parlant des plantes et de leur toxicité";
 
     require_once "views/front/articles/plantes.view.php";
 }
-function getSterilisation()
+function getPageSterilisation()
 {
     $title = "La stérilisation";
     $description = "Page traitant de la stérilisation";
 
     require_once "views/front/articles/sterilisation.view.php";
 }
-function getTemperature()
+function getPageTemperature()
 {
     $title = "La température";
     $description = "Page traitant de la température";
 
     require_once "views/front/articles/temperature.view.php";
 }
-function getContact()
+function getPageContact()
 {
     $title = "Contact";
     $description = "Page de contact";
 
     require_once "views/front/contact/contact.view.php";
 }
-function getDon()
+function getPageDon()
 {
     $title = "Faire un don";
     $description = "Page pour faire un don";
 
     require_once "views/front/contact/don.view.php";
 }
-function getMentions()
+function getPageMentions()
 {
     $title = "Mentions légales";
     $description = "Page listant les mentions légales";
 
     require_once "views/front/contact/mentions.view.php";
+}
+function getPageActualites()
+{
+    $title = "Actualites";
+    $description = "Page listant les actualités";
+
+    require_once "views/front/actu/actus.view.php";
 }
