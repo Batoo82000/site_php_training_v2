@@ -12,8 +12,8 @@
                         L'asso
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorRoseMenu" href="?page=association">Qui sommes-nous ?</a></li>
-                        <li><a class="dropdown-item perso_ColorRoseMenu" href="?page=partenaires">Partenaires</a></li>
+                        <li><a class="dropdown-item perso_ColorRoseMenu" href="association">Qui sommes-nous ?</a></li>
+                        <li><a class="dropdown-item perso_ColorRoseMenu" href="partenaires">Partenaires</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -21,9 +21,9 @@
                         Pensionnaires
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idstatus=<?= ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a></li>
-                        <li><a class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idstatus=<?= ID_STATUT_FALD ?>">Famille d'accueil longue durée</a></li>
-                        <li><a class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idstatus=<?= ID_STATUT_ADOPTE ?>">Les anciens</a></li>
+                        <li><a class="dropdown-item perso_ColorOrangeMenu" href="pensionnaires&idstatus=<?= ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a></li>
+                        <li><a class="dropdown-item perso_ColorOrangeMenu" href="pensionnaires&idstatus=<?= ID_STATUT_FALD ?>">Famille d'accueil longue durée</a></li>
+                        <li><a class="dropdown-item perso_ColorOrangeMenu" href="pensionnaires&idstatus=<?= ID_STATUT_ADOPTE ?>">Les anciens</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
                         Actus
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorVertMenu" href="?page=actus">Nouvelles des adoptés</a></li>
+                        <li><a class="dropdown-item perso_ColorVertMenu" href="actus">Nouvelles des adoptés</a></li>
                         <li><a class="dropdown-item perso_ColorVertMenu" href="#">Evènements</a></li>
                     </ul>
                 </li>
@@ -40,11 +40,11 @@
                         Conseils
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorRougeMenu" href="?page=chocolat">Le chocolat</a></li>
-                        <li><a class="dropdown-item perso_ColorRougeMenu" href="?page=educateur">Education canine</a></li>
-                        <li><a class="dropdown-item perso_ColorRougeMenu" href="?page=plantes">Les plantes toxiques</a></li>
-                        <li><a class="dropdown-item perso_ColorRougeMenu" href="?page=sterilisation">Stérilisation</a></li>
-                        <li><a class="dropdown-item perso_ColorRougeMenu" href="?page=temperature">Température</a></li>
+                        <li><a class="dropdown-item perso_ColorRougeMenu" href="chocolat">Le chocolat</a></li>
+                        <li><a class="dropdown-item perso_ColorRougeMenu" href="educateur">Education canine</a></li>
+                        <li><a class="dropdown-item perso_ColorRougeMenu" href="plantes">Les plantes toxiques</a></li>
+                        <li><a class="dropdown-item perso_ColorRougeMenu" href="sterilisation">Stérilisation</a></li>
+                        <li><a class="dropdown-item perso_ColorRougeMenu" href="temperature">Température</a></li>
 
                     </ul>
                 </li>
@@ -53,9 +53,9 @@
                         Contacts
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorBleuMenu" href="?page=contact">Contact</a></li>
-                        <li><a class="dropdown-item perso_ColorBleuMenu" href="?page=don">Don</a></li>
-                        <li><a class="dropdown-item perso_ColorBleuMenu" href="?page=mentions">Mentions Légales</a></li>
+                        <li><a class="dropdown-item perso_ColorBleuMenu" href="contact">Contact</a></li>
+                        <li><a class="dropdown-item perso_ColorBleuMenu" href="don">Don</a></li>
+                        <li><a class="dropdown-item perso_ColorBleuMenu" href="mentions">Mentions Légales</a></li>
                     </ul>
                 </li>
 

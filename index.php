@@ -33,10 +33,25 @@ try {
             break;
             case "actus" : getPageActualites();
             break;
+            case "error301" :
+            case "error302" :
+            case "error400" :
+            case "error401" :
+            case "error402" :
+            case "error404" :
+            case "error500" :
+            case "error502" :
+            case "error503" :
+            case "error504" :
+            case "error505" : throw new Exception("Erreur de type : ". $_GET['page']);
+            break;
+            case "error403" : throw new Exception("Vous n'avez pas les droits pour accéder à ce dossier.");
+            break;
+            case "error404":
             default: throw new Exception("La page demandée n'existe pas.");
         }
     } else {
-        getAccueil();
+        getPageAccueil();
     }
 } catch (Exception $e) {
     $titre ="Error";
