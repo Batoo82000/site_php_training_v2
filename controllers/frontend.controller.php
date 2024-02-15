@@ -7,37 +7,52 @@ function getPagePensionnaires()
     $title = "Page de pensionnaires";
     $description = "c'est la page des pensionnaires";
 
-    $animaux = getAnimalFromStatus($_GET['idstatus']);
+    if (isset($_GET['idstatus']) && !empty($_GET['idstatus'])) {
 
-    $titleH1 = "";
-    if ((int) $_GET['idstatus'] === ID_STATUT_A_L_ADOPTION) : $titleH1 = "Ils cherchent une famille";
+        $idStatus = Securite::secureHTML($_GET['idstatus']);
+        $animaux = getAnimalFromStatus($idStatus);
+        
+        $titleH1 = "";
 
-    elseif ((int) $_GET['idstatus'] === ID_STATUT_ADOPTE) : $titleH1 = "Les anciens";
-
-    elseif ((int) $_GET['idstatus'] === ID_STATUT_FALD) : $titleH1 = "Famille d’accueil longue durée";
-
-    endif;
-
-    foreach ($animaux as $key => $animal) {
-        $image = getFirstImageAnimal($animal['id_animal']);
-        $animaux[$key]['image'] = $image;
-
-        $caracteres = getCaracteresAnimals($animal['id_animal']);
-        $animaux[$key]['caracteres'] = $caracteres;
+        if ((int) $idStatus === ID_STATUT_A_L_ADOPTION) : $titleH1 = "Ils cherchent une famille";
+        
+            elseif ((int) $idStatus === ID_STATUT_ADOPTE) : $titleH1 = "Les anciens";
+            
+            elseif ((int) $idStatus === ID_STATUT_FALD) : $titleH1 = "Famille d’accueil longue durée";
+            
+        endif;
+    
+        foreach ($animaux as $key => $animal) {
+            $image = getFirstImageAnimal($animal['id_animal']);
+            $animaux[$key]['image'] = $image;
+            
+            $caracteres = getCaracteresAnimals($animal['id_animal']);
+            $animaux[$key]['caracteres'] = $caracteres;
     }
-
-    require_once "views/front/pensionnaires.view.php";
+        require_once "views/front/pensionnaires.view.php";
+    } else {
+        throw new Exception("L'id du statut est manquant. Vous ne pouvez pas accéder à la page.");
+    }
 }
 
 function getPageAnimal() {
-    
-    $animal = getAnimalFromIdAnimalBd($_GET['idAnimal']);
-    $title = "Page de ".$animal['nom_animal'];
-    $description = "Page de ".$animal['nom_animal'];
-    $images = getImagesFromAnimal($_GET['idAnimal']);
-    $caracteres = getCaracteresAnimals($_GET['idAnimal']);
 
-    require_once "views/front/animal.view.php";
+    if(isset($_GET['idAnimal']) && !empty($_GET['idAnimal'])) {
+
+        $idAnimal = Securite::secureHTML($_GET['idAnimal']);
+        
+        $animal = getAnimalFromIdAnimalBd($idAnimal);
+        $images = getImagesFromAnimal($idAnimal);
+        $caracteres = getCaracteresAnimals($idAnimal);
+        
+        $title = "Page de ".$animal['nom_animal'];
+        $description = "Page de ".$animal['nom_animal'];
+
+        require_once "views/front/animal.view.php";
+
+    } else {
+        throw new Exception("L'id de l'animaux est manquant. Vous ne pouvez pas accéder à la page.");
+    }
 }
 
 function getPageAccueil()

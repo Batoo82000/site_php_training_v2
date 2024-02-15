@@ -10,7 +10,7 @@ function getAnimalFromStatus($idStatus)
         $req .= " or id_status = " . ID_STATUT_MORT;
     }
     $stmt = $bdd->prepare($req);
-    $stmt->bindValue(':idStatus', $idStatus);
+    $stmt->bindValue(':idStatus', $idStatus, PDO::PARAM_INT);
     $stmt->execute();
     $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
@@ -27,7 +27,7 @@ function getFirstImageAnimal($idAnimal) {
         WHERE a.id_animal= :idAnimal
         LIMIT 1
     ');
-    $stmt->bindValue(':idAnimal', $idAnimal);
+    $stmt->bindValue(':idAnimal', $idAnimal, PDO::PARAM_INT);
     $stmt->execute();
     $image = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
@@ -42,7 +42,7 @@ function getCaracteresAnimals($idAnimal) {
         INNER join dispose d on c.id_caractere = d.id_caractere
         where id_animal = :idAnimal
     ');
-    $stmt->bindValue(':idAnimal', $idAnimal);
+    $stmt->bindValue(':idAnimal', $idAnimal, PDO::PARAM_INT);
     $stmt->execute();
     $caracteres = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
@@ -56,7 +56,7 @@ function getAnimalFromIdAnimalBd($idAnimal) {
         FROM animal 
         where id_animal = :idAnimal";
     $stmt = $bdd->prepare($req);
-    $stmt->bindValue(':idAnimal', $idAnimal);
+    $stmt->bindValue(':idAnimal', $idAnimal, PDO::PARAM_INT);
     $stmt->execute();
     $animal = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
@@ -72,7 +72,7 @@ function getImagesFromAnimal($idAnimal) {
         INNER JOIN animal a on a.id_animal = c.id_animal
         WHERE a.id_animal= :idAnimal
         ');
-    $stmt->bindValue(':idAnimal', $idAnimal);
+    $stmt->bindValue(':idAnimal', $idAnimal, PDO::PARAM_INT);
     $stmt->execute();
     $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();

@@ -1,10 +1,12 @@
 <?php
 
 require_once "controllers/frontend.controller.php";
+require_once "config/Securite.class.php";
 
 try {
     if(isset($_GET['page']) && !empty($_GET['page'])){
-        switch ($_GET['page']) {
+        $page = Securite::secureHTML($_GET['page']);
+        switch ($page) {
             case "accueil" : getPageAccueil();
             break;
             case "pensionnaires" : getPagePensionnaires();
@@ -43,7 +45,7 @@ try {
             case "error502" :
             case "error503" :
             case "error504" :
-            case "error505" : throw new Exception("Erreur de type : ". $_GET['page']);
+            case "error505" : throw new Exception("Erreur de type : ". $page);
             break;
             case "error403" : throw new Exception("Vous n'avez pas les droits pour accéder à ce dossier.");
             break;
