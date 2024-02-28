@@ -1,39 +1,23 @@
 <?php
 ob_start();
-echo styleTitreNiveau1("Actus", COLOR_TITRE_ACTUS) ?>
+echo styleTitreNiveau1($titleH1, COLOR_TITRE_ACTUS) ?>
 
-<?php
-echo styleTitrePost("Posté le : <span class='".COLOR_TITRE_ACTUS."'>05/2019</span> par <span class='".COLOR_TITRE_ACTUS."'> Framboise</span>");
+
+<?php foreach($actualites as $actualite) :
+echo styleTitrePost("<span class='".COLOR_TITRE_ACTUS."'> {$actualite['libelle_actualite']} </span> Posté le : <span class='".COLOR_TITRE_ACTUS."'> ".date("d/m/Y", strtotime($actualite['date_publication']))." </span>");
 ?>
 
-<div class="row g-0 align-items-center" style="min-height: 300px">
-    <div class="col-12 col-md-3 text-center">
-        <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="Framboise" style="max-height: 280px;">
+    <div class="row g-0 align-items-center" style="min-height: 300px">
+        <div class="col-12 col-lg-3 text-center">
+            <img src="public/sources/images/sites/<?= $actualite['image']['url_image'] ?>" alt="<?= $actualite['image']['libelle_image'] ?>" style="max-height: 280px;" class="img-fluid p-2">
+        </div>
+        <div class="col-12 col-md-9">
+            <p>
+                <?= $actualite['contenu_actualite'] ?>
+            </p>    
     </div>
-    <div class="col-12 col-md-9">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus
-            vel nibh sagittis aliquam. Suspendisse potenti. Vivamus tincidunt
-            accumsan nisl, eu rutrum purus. Pellentesque habitant morbi tristique
-            senectus et netus et malesuada fames ac turpis egestas. Sed
-            tincidunt, lacus in tincidunt sollicitudin, nunc risus tincidunt
-        </p>    
-</div>
-<div class="row g-0 align-items-center" style="min-height: 300px">
-    <div class="col-12 col-md-3 text-center">
-        <img src="public/sources/images/animaux/chat/framboise/framboise.jpg" alt="Framboise" style="max-height: 280px;">
-    </div>
-    <div class="col-12 col-md-9">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus
-            vel nibh sagittis aliquam. Suspendisse potenti. Vivamus tincidunt
-            accumsan nisl, eu rutrum purus. Pellentesque habitant morbi tristique
-            senectus et netus et malesuada fames ac turpis egestas. Sed
-            tincidunt, lacus in tincidunt sollicitudin, nunc risus tincidunt
-        </p>    
-</div>
 
-
+<?php endforeach; ?>
 
 <?php
 $content = ob_get_clean();

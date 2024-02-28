@@ -4,16 +4,18 @@ const COLOR_TITRE_PENSIONNAIRES = "perso_ColorOrangeMenu";
 const COLOR_TITRE_ACTUS = "perso_ColorVertMenu";
 const COLOR_TITRE_CONSEILS = "perso_ColorRougeMenu";
 const COLOR_TITRE_CONTACTS = "perso_ColorBleuMenu";
-
-const HOST_NAME = "localhost";
-const DATABASE_NAME = "nanasite2";
-const USER_NAME = "root";
-const PASSWORD = "";
+const COLOR_TITRE_ADMIN = "perso_ColorAdminMenu";
 
 const ID_STATUT_A_L_ADOPTION = 1;
 const ID_STATUT_ADOPTE = 3;
 const ID_STATUT_FALD = 5;
 const ID_STATUT_MORT = 7;
+
+const TYPE_NEWS = "News";
+const TYPE_ACTIONS = "Action";
+const TYPE_EVENTS = "Event";
+
+const COOKIE_PROTECT = "timer";
 
 define("URL", str_replace("index.php", "" , (isset($_SERVER["HTTPS"]) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
 // define("URL", ...) : Cela signifie que nous créons une sorte de règle pour l'ordinateur. On lui dit que chaque fois qu'on dit "URL", on veut parler de quelque chose de spécifique.

@@ -24,15 +24,24 @@
                         <li><a class="dropdown-item perso_ColorOrangeMenu" href="pensionnaires&idstatus=<?= ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a></li>
                         <li><a class="dropdown-item perso_ColorOrangeMenu" href="pensionnaires&idstatus=<?= ID_STATUT_FALD ?>">Famille d'accueil longue durée</a></li>
                         <li><a class="dropdown-item perso_ColorOrangeMenu" href="pensionnaires&idstatus=<?= ID_STATUT_ADOPTE ?>">Les anciens</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle perso_ColorVertMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Actus
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item perso_ColorVertMenu" href="actus">Nouvelles des adoptés</a></li>
-                        <li><a class="dropdown-item perso_ColorVertMenu" href="#">Evènements</a></li>
+                        <?php if (Securite::verifAccessSession()) { ?>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item perso_ColorAdminMenu" href="genererPensionnaireAdmin">Gestion des pensionnaires</a></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle perso_ColorVertMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actus
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item perso_ColorVertMenu" href="actus&type=<?= TYPE_NEWS ?>">Nouvelles des adoptés</a></li>
+                            <li><a class="dropdown-item perso_ColorVertMenu" href="actus&type=<?= TYPE_EVENTS ?>">Evènements</a></li>
+                            <li><a class="dropdown-item perso_ColorVertMenu" href="actus&type=<?= TYPE_ACTIONS ?>">Nos actions au quotidien</a></li>
+                            <?php if (Securite::verifAccessSession()) { ?>
+                                <div class="dropdown-divider"></div>
+                                <li><a class="dropdown-item perso_ColorAdminMenu" href="genererNewsAdmin">Gestion des news</a></li>
+                            <?php } ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

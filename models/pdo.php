@@ -1,5 +1,5 @@
 <?php
-
+require "config.model.php";
 function connexionPDO()
 {
     try {

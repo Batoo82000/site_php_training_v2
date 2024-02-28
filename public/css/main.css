@@ -19,6 +19,7 @@ textarea {
 .perso_ColorOrangeMenu  {color : rgb(247, 179, 91) !important;}
 .perso_ColorVertMenu    {color : #34C924 !important;}
 .perso_ColorRougeMenu   {color : rgb(230, 78, 78) !important;}
+.perso_ColorAdminMenu   {color : rgba(253, 5, 5, 0.689) !important;}
 .perso_ColorBleuMenu    {color : #40E0D0 !important;}
 
 .perso_bgRose{background-color:rgb(230,196,230) !important;}

@@ -10,7 +10,7 @@ echo styleTitreNiveau1($titleH1, COLOR_TITRE_PENSIONNAIRES); ?>
         <div class="col-12 col-lg-6">
             <div class="row border border-dark rounded-3 m-2 align-items-center <?= ($animal['sexe']) ? "perso_bgVert" : "perso_bgRose"?>" style="height: 200px;">
                 <div class="col p-2 center">
-                    <img src="<?= URL ?>public/sources/images/animaux/<?= $animal['type_animal'] ?>/<?= $animal['image']['url_image'] ?>" class="img-thumbnail" alt="<?= $animal['image']['libelle_image'] ?>" style="max-height: 180px">
+                    <img src="<?= URL ?>public/sources/images/sites/<?= $animal['image']['url_image'] ?>" class="img-thumbnail" alt="<?= $animal['image']['libelle_image'] ?>" style="max-height: 180px">
                 </div>
 
                 <?php
@@ -37,7 +37,7 @@ echo styleTitreNiveau1($titleH1, COLOR_TITRE_PENSIONNAIRES); ?>
                 </div>
                 <div class="col-6 text-center">
                     <div class="perso_policeTitre perso_Size20 mb-3"><?= $animal['nom_animal'] ?></div>
-                    <div class="mb-2"><?= $animal['date_naissance_animal'] ?></div>
+                    <div class="mb-2"><?= date("d/m/Y", strtotime($animal['date_naissance_animal']))  ?></div>
 
 
                     <div class="">

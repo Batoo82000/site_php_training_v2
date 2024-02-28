@@ -1,7 +1,11 @@
 <?php
-
+session_start();
 require_once "controllers/frontend.controller.php";
+require_once "controllers/backend.controller.php";
 require_once "config/Securite.class.php";
+
+// $hash = password_hash("test", PASSWORD_DEFAULT);
+// echo $hash;
 
 try {
     if(isset($_GET['page']) && !empty($_GET['page'])){
@@ -34,6 +38,14 @@ try {
             case "animal" : getPageAnimal();
             break;
             case "actus" : getPageActualites();
+            break;
+            case "login" : getPageLogin();
+            break;
+            case "admin" : getPageAdmin();
+            break;
+            case "genererPensionnaireAdmin" : getPagePensionnaireAdmin();
+            break;
+            case "genererNewsAdmin" : getPageNewsAdmin();
             break;
             case "error301" :
             case "error302" :

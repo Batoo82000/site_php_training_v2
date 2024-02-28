@@ -4,7 +4,7 @@ echo styleTitreNiveau1($animal['nom_animal'], COLOR_TITRE_PENSIONNAIRES) ?>
 
 <div class="row border border-dark rounded-3 m-2 align-items-center <?= ($animal['sexe']) ? "perso_bgVert" : "perso_bgRose" ?>">
     <div class="col p-2 center">
-        <img src="<?= URL ?>public/sources/images/animaux/<?= $animal['type_animal'] ?>/<?= $images[0]['url_image'] ?>" class="img-thumbnail" alt="<?= $images[0]['libelle_image'] ?>" style="max-height: 180px">
+        <img src="<?= URL ?>public/sources/images/sites/<?= $images[0]['url_image'] ?>" class="img-thumbnail" alt="<?= $images[0]['libelle_image'] ?>" style="max-height: 180px">
     </div>
 
     <?php
@@ -29,7 +29,7 @@ echo styleTitreNiveau1($animal['nom_animal'], COLOR_TITRE_PENSIONNAIRES) ?>
 
     <div class="col-6 col-md-4 text-center">
         <div class="perso_policeTitre perso_Size20 mb-3">Puce : <?php $animal['puce'] ?></div>
-        <div class="mb-2">Née le : <?= $animal['date_naissance_animal'] ?></div>
+        <div class="mb-2">Née le : <?= date("d/m/Y", strtotime($animal['date_naissance_animal'])) ?></div>
         <div class="">
             <?php foreach ($caracteres as $caractere) : ?>
                 <span class="badge bg-warning m-1 p-2 d-none d-sm-inline"><?= ($animal['sexe']) ? $caractere['libelle_caractere_m'] : $caractere['libelle_caractere_f'] ?></span>
@@ -51,13 +51,15 @@ echo styleTitreNiveau1($animal['nom_animal'], COLOR_TITRE_PENSIONNAIRES) ?>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $key ?>" class="<?php echo ($key === 0) ? "active" : "" ?> bg-dark" aria-current="true" aria-label="Slide 1"></button>
             <?php endforeach; ?>
             </div>
+
             <div class="carousel-inner text-center">
                 <?php foreach ($images as $key => $image) : ?>
                     <div class="carousel-item <?php echo ($key === 0) ? "active" : "" ?>">
-                        <img src="<?= URL ?>public/sources/images/animaux/<?= $animal['type_animal'] ?>/<?= $image['url_image'] ?>" class="img-thumbnail" style="height:500px;" alt="<?= $image['libelle_image']?>">
+                        <img src="<?= URL ?>public/sources/images/sites/<?= $image['url_image'] ?>" class="img-thumbnail" style="height:500px;" alt="<?= $image['libelle_image']?>">
                     </div>
                 <?php endforeach; ?>
             </div>
+            
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>

@@ -1,7 +1,10 @@
 <?php
 require_once "public/utile/formatage.php";
 require_once 'models/animal.dao.php';
+require_once 'models/actualite.dao.php';
+
 require_once 'config/config.php';
+
 function getPagePensionnaires()
 {
     $title = "Page de pensionnaires";
@@ -35,12 +38,44 @@ function getPagePensionnaires()
     }
 }
 
+function getPageActualites()
+{
+    $title = "Actualites";
+    $description = "Page listant les actualités";
+
+
+
+    if(isset($_GET['type']) && !empty($_GET['type'])) {
+        $typeNews = Securite::secureHTML($_GET['type']);
+
+        $titleH1 = "";
+
+        if ((string) $typeNews === TYPE_NEWS) : $titleH1 = "Nouvelles des adoptés";
+        
+            elseif ((string) $typeNews === TYPE_EVENTS) : $titleH1 = "Evènements";
+            
+            elseif ((string) $typeNews === TYPE_ACTIONS) : $titleH1 = "Nos actions au quotidien";
+            
+        endif;
+
+        $actualites = getActualiteFromBd($typeNews);
+        foreach ($actualites as $key => $actualite) {
+            $image = getImageActualiteFromBd($actualite['id_image']);
+            $actualites[$key]['image'] = $image;
+        }
+    }
+    else {
+        throw new Exception("Le type de l'actualité est manquante. Vous ne pouvez pas accéder à la page.");
+    }
+    require_once "views/front/actu/actus.view.php";
+}
+
 function getPageAnimal() {
 
     if(isset($_GET['idAnimal']) && !empty($_GET['idAnimal'])) {
 
         $idAnimal = Securite::secureHTML($_GET['idAnimal']);
-        
+
         $animal = getAnimalFromIdAnimalBd($idAnimal);
         $images = getImagesFromAnimal($idAnimal);
         $caracteres = getCaracteresAnimals($idAnimal);
@@ -60,6 +95,14 @@ function getPageAccueil()
     $title = "Page d'accueil";
     $description = "Nos amis, nos animaux";
 
+    $animaux = getAnimalFromStatus(ID_STATUT_A_L_ADOPTION);
+    foreach ($animaux as $key => $animal) {
+        $image = getFirstImageAnimal($animal['id_animal']);
+        $animaux[$key]['image'] = $image;
+    }
+    $news = getLastNews();
+    $actions = getLastActionsOrEvents();
+    
     require_once "views/front/accueil.view.php";
 }
 function getPageAssociation()
@@ -132,10 +175,4 @@ function getPageMentions()
 
     require_once "views/front/contact/mentions.view.php";
 }
-function getPageActualites()
-{
-    $title = "Actualites";
-    $description = "Page listant les actualités";
 
-    require_once "views/front/actu/actus.view.php";
-}
