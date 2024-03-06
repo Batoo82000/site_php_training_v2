@@ -11,9 +11,14 @@ const ID_STATUT_ADOPTE = 3;
 const ID_STATUT_FALD = 5;
 const ID_STATUT_MORT = 7;
 
-const TYPE_NEWS = "News";
-const TYPE_ACTIONS = "Action";
-const TYPE_EVENTS = "Event";
+const TYPE_NEWS = 1;
+const TYPE_ACTIONS = 2;
+const TYPE_EVENTS = 3;
+
+const ALERT_SUCCESS = 1;
+const ALERT_DANGER = 2;
+const ALERT_WARNING = 3;
+const ALERT_INFO = 4;
 
 const COOKIE_PROTECT = "timer";
 

@@ -20,13 +20,10 @@ echo styleTitreNiveau1("Login", COLOR_TITRE_ADMIN);
   </form>
 </div>
 
-<?php if ($alert !== "") { ?> 
-  
-  <div class="alert alert-danger" role="alert"> 
-    <?= $alert ?> 
-  </div>
-
-<?php } ?>
+<?php if ($alert !== "") { 
+  echo afficherAlerte($alert, ALERT_DANGER);
+}
+?>
 
 <?php
 $content = ob_get_clean();

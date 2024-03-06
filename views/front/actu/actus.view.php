@@ -15,6 +15,7 @@ echo styleTitrePost("<span class='".COLOR_TITRE_ACTUS."'> {$actualite['libelle_a
             <p>
                 <?= $actualite['contenu_actualite'] ?>
             </p>    
+        </div>
     </div>
 
 <?php endforeach; ?>

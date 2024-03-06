@@ -44,4 +44,16 @@ function affichageCoupe($str, $taille){
     $desc.= "<b class='text-primary'>[...]</b>";
     return $desc;
 }
+
+function afficherAlerte($text, $type){
+    $alertType ="";
+    if($type === ALERT_SUCCESS) $alertType = "success";
+    if($type === ALERT_DANGER) $alertType = "danger";
+    if($type === ALERT_INFO) $alertType = "info";
+    if($type === ALERT_WARNING) $alertType = "warning";
+    $txt = "<div class='alert alert-".$alertType." alert-dismissible fade show' role='alert'>";
+    $txt .= $text;
+    $txt .= "</div>";
+    return $txt;
+}
 ?>

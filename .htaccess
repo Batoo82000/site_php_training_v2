@@ -1,0 +1,97 @@
+RewriteEngine on 
+# Cette ligne active le moteur de réécriture d'URL d'Apache. Sans cette directive, les règles de réécriture ne seront pas appliquées.
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# Cette directive RewriteCond spécifie une condition à appliquer à la règle de réécriture suivante. Elle vérifie si le fichier demandé n'existe pas (!-f). Si cette condition est vraie, la règle de réécriture suivante sera appliquée.
+
+RewriteCond %{REQUEST_FILENAME} !-d
+# Cette directive RewriteCond spécifie une autre condition à appliquer. Elle vérifie si le répertoire demandé n'existe pas (!-d). Si cette condition est également vraie, la règle de réécriture suivante sera appliquée.
+
+RewriteRule ^(.*)$ index.php?page=$1
+# Cette directive RewriteRule définit la règle de réécriture elle-même. Elle spécifie comment réécrire l'URL demandée. Dans ce cas, elle redirige toutes les requêtes vers index.php avec le paramètre page qui contient le chemin demandé. Par exemple, si vous demandez /exemple, cela sera redirigé vers index.php?page=exemple.
+
+ErrorDocument 301 /site_php_v2/index.php?page=error301
+# Document déplacé de façon permanente. 
+ErrorDocument 302 /site_php_v2/index.php?page=error302
+# Document déplacé de façon temporaire. 
+ErrorDocument 400 /site_php_v2/index.php?page=error400
+# La syntaxe de la requête est erronée.
+ErrorDocument 401 /site_php_v2/index.php?page=error401
+# Le serveur a compris la requête, mais refuse de l'exécuter. Contrairement à l'erreur 401, s'authentifier ne fera aucune différence. Sur les serveurs où l'authentification est requise, cela signifie généralement que l'authentification a été acceptée mais que les droits d'accès ne permettent pas au client d'accéder à la ressource. 
+ErrorDocument 402 /site_php_v2/index.php?page=error402
+# Paiement requis pour accéder à la ressource. 
+ErrorDocument 403 /site_php_v2/index.php?page=error403
+# Le serveur a compris la requête, mais refuse de l'exécuter. Contrairement à l'erreur 401, s'authentifier ne fera aucune différence. Sur les serveurs où l'authentification est requise, cela signifie généralement que l'authentification a été acceptée mais que les droits d'accès ne permettent pas au client d'accéder à la ressource. 
+ErrorDocument 404 /site_php_v2/index.php?page=error404
+# Cette directive ErrorDocument spécifie le fichier à afficher lorsque le serveur rencontre une erreur 404 (page non trouvée). Dans ce cas, il redirige vers index.php avec le paramètre page défini sur error404.
+ErrorDocument 500 /site_php_v2/index.php?page=error500
+# Erreur interne du serveur. 
+ErrorDocument 502 /site_php_v2/index.php?page=error502
+# En agissant en tant que serveur proxy ou passerelle, le serveur a reçu une réponse invalide depuis le serveur distant. 
+ErrorDocument 503 /site_php_v2/index.php?page=error503
+# Service temporairement indisponible ou en maintenance. 
+ErrorDocument 504 /site_php_v2/index.php?page=error504
+# Temps d’attente d’une réponse d’un serveur à un serveur intermédiaire écoulé. 
+ErrorDocument 505 /site_php_v2/index.php?page=error505
+# Version HTTP non gérée par le serveur. 
+
+Options All -Indexes
+# Cette ligne spécifie les options du serveur pour le répertoire où se trouve le fichier .htaccess.
+# Options All : Cela indique que toutes les options sont activées pour ce répertoire. Les options incluent des fonctionnalités telles que la redirection, la réécriture d'URL, etc.
+# -Indexes : Le tiret - suivi de Indexes signifie que l'option d'indexation des répertoires est désactivée. Cela signifie que si un répertoire n'a pas de fichier index (comme index.html, index.php, etc.), Apache ne listera pas le contenu de ce répertoire lorsqu'un utilisateur y accède via le navigateur. Cela aide à protéger les répertoires sensibles en empêchant leur liste.
+
+ServerSignature Off
+# Cette ligne désactive l'envoi du serveur Apache de la signature du serveur dans les en-têtes HTTP de la réponse.
+# ServerSignature : C'est une directive qui contrôle l'inclusion d'une signature de serveur dans les réponses du serveur. La signature de serveur inclut des informations telles que le nom du serveur, la version d'Apache, etc.
+# Off : Cela signifie que la signature de serveur est désactivée. Ainsi, lorsqu'un navigateur demande une ressource au serveur, le serveur n'inclura pas d'informations sur sa version ou d'autres détails dans les en-têtes de réponse HTTP.
+
+Options +FollowSymLinks
+# Cette directive indique au serveur web Apache d'autoriser le suivi des liens symboliques dans le répertoire où se trouve le fichier .htaccess.
+# Options : C'est une directive qui contrôle diverses fonctionnalités du serveur web Apache pour un répertoire spécifique.
+# +FollowSymLinks : Cela signifie que le serveur autorise le suivi des liens symboliques. Un lien symbolique est un type de lien qui pointe vers un autre fichier ou répertoire sur le système de fichiers. Autoriser le suivi des liens symboliques peut être utile pour la création de structures de fichiers flexibles et complexes.
+
+AddDefaultCharset UTF-8
+# Cette directive spécifie le jeu de caractères par défaut à utiliser pour les fichiers texte servis par le serveur Apache dans le répertoire où se trouve le fichier .htaccess.
+# AddDefaultCharset : C'est une directive qui permet de définir le jeu de caractères par défaut à utiliser pour les fichiers textuels servis par le serveur.
+# UTF-8 : C'est le jeu de caractères spécifié. UTF-8 est un jeu de caractères universel qui prend en charge la plupart des caractères utilisés dans différents langues et alphabets.
+
+<Files php.ini>
+    Require all denied
+</Files>
+# Cela empêche l'accès direct au fichier de configuration PHP (php.ini), qui peut contenir des informations sensibles sur la configuration du serveur.
+
+<FilesMatch "\.(htaccess|htpasswd|log|ini|inc|bak)$">
+    Require all denied
+</FilesMatch>
+# Cette directive bloque l'accès aux fichiers sensibles tels que .htaccess, .htpasswd, les fichiers journaux (logs), les fichiers de configuration (ini), etc.
+
+<Files ".htaccess">
+    Require all denied
+</Files>
+# Cette directive restreint l'accès au fichier .htaccess en le refusant à tous les utilisateurs.
+
+#------------------------------------------------------------
+#Protection XSS, clickJacking et Mime-Type
+<IfModule mod_headers.c>
+# Cette ligne vérifie si le module mod_headers est activé dans Apache. Le code à l'intérieur de cette balise <IfModule> ne sera exécuté que si le module est activé. Cela permet d'éviter les erreurs si le module n'est pas disponible.
+    Header set X-XSS-Protection "1; mode=block"
+#  Cette ligne ajoute l'en-tête X-XSS-Protection à toutes les réponses HTTP envoyées par le serveur. L'en-tête X-XSS-Protection active le filtre XSS intégré dans les navigateurs modernes pour détecter et bloquer les attaques XSS (Cross-Site Scripting). La valeur "1; mode=block" active le filtre XSS en mode strict, ce qui force le navigateur à bloquer toute tentative d'exécution de scripts non autorisés.
+    Header always append X-Frame-Options SAMEORIGIN
+#  Cette ligne ajoute l'en-tête X-Frame-Options à toutes les réponses HTTP et spécifie que les pages peuvent être incluses dans une frame ou un iframe uniquement si elles proviennent du même domaine (SAMEORIGIN). Cela aide à prévenir les attaques de clickjacking en empêchant le site d'être inclus dans une frame provenant d'un autre domaine.
+    Header set X-Content-Type-Options: "nosniff"
+# Cette ligne ajoute l'en-tête X-Content-Type-Options à toutes les réponses HTTP et spécifie que le navigateur doit respecter le type MIME spécifié dans l'en-tête Content-Type et ne pas deviner le type MIME (nosniff). Cela aide à protéger contre certaines attaques basées sur les types MIME, comme les attaques MIME sniffing.
+</IfModule>
+# Ce code ajoute des en-têtes de sécurité HTTP à toutes les réponses envoyées par le serveur Apache pour aider à protéger le site web contre les attaques XSS, le clickjacking et les attaques basées sur les types MIME.
+#------------------------------------------------------------
+RewriteCond %{REQUEST_METHOD} GET
+# Cette ligne vérifie si la méthode de requête est GET. Cela signifie que les règles de réécriture suivantes ne s'appliqueront qu'aux requêtes GET.
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9]=http:// [OR]
+# Cette ligne vérifie si la chaîne de requête contient une séquence alphanumérique suivie de =http://. Cela peut indiquer une tentative d'exploitation en incluant des URL externes dans les paramètres de requête. Le OR indique qu'une des conditions suivantes doit être vraie.
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9]=(\.\.//?) [OR]
+#  Cette ligne vérifie si la chaîne de requête contient une séquence alphanumérique suivie de =../ ou =../ suivie de zéro ou plusieurs caractères. Ceci peut indiquer une tentative de navigation dans les répertoires en remontant dans l'arborescence des répertoires.
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9]=/([a-z0-9_.]//?) [NC]
+# Cette ligne vérifie si la chaîne de requête contient une séquence alphanumérique suivie de =/(...) où (...) peut être une combinaison de lettres minuscules, chiffres, soulignés ou points suivie de zéro ou plusieurs barres obliques. Cela peut également indiquer une tentative de navigation dans les répertoires en remontant dans l'arborescence des répertoires.
+RewriteRule .* - [F]
+# Cette ligne spécifie une règle de réécriture qui interdit (F pour forbidden) l'accès à toutes les URL qui correspondent aux conditions précédentes. .* correspond à n'importe quelle URL, et - signifie qu'aucune réécriture ne doit être effectuée. Ainsi, si une URL correspond à l'une des conditions précédentes, elle sera interdite.
+# Ce code bloque les requêtes GET qui tentent d'exploiter des failles de sécurité potentielles en incluant des URL externes, en naviguant dans les répertoires ou en utilisant des caractères spéciaux dans les paramètres de requête. Cela contribue à protéger le site contre les attaques potentielles.
+#------------------------------------------------------------
