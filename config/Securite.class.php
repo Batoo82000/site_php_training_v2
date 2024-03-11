@@ -1,4 +1,5 @@
 <?php
+
 class Securite {
     public static function secureHTML($string){
         return htmlentities($string);
@@ -24,6 +25,7 @@ class Securite {
     public static function verifAccessSession(){
         return (isset($_SESSION['acces']) && !empty($_SESSION['acces']) && $_SESSION['acces'] === "admin");
     }
+
     public static function verificationAccess(){
         return (self::verifAccessSession() && self::verificationCookie());
     }

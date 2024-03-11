@@ -1,5 +1,4 @@
 <?php
-
 require_once "public/utile/formatage.php";
 require_once "public/utile/gestionImage.php";
 require_once 'models/animal.dao.php';
@@ -65,8 +64,30 @@ function getPagePensionnaireAdmin() {
         throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
     }
 }
-function getPageNewsAdmin() {
+function getPageNewsAdmin($require = "", $alert = "", $alertType = "", $data="") {
+    
+    if(Securite::verificationAccess()){
+        Securite::genereCookiePassword();
+        $title = "Page de gestion des news";
+        $description = "Page de gestion des news";
+
+        $typeActualites = getTypesActualite();
+
+        $contentAdminAction="";
+        if($require !=="") require_once $require;
+        require_once "views/back/adminNews.view.php";
+    } else {
+        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
+    }
+
+    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true"){
+        session_destroy();
+        header("Location: accueil");
+    }
+}
+function getPageNewsAdminAjout() {
     $alert ="";
+    $alertType ="";
     if(isset($_POST['titreActu'] ) && !empty($_POST['titreActu']) &&
     isset($_POST['typeActu'] ) && !empty($_POST['typeActu']) &&
     isset($_POST['contenuActu'] ) && !empty($_POST['contenuActu'])
@@ -95,20 +116,23 @@ function getPageNewsAdmin() {
     }
     
     
-    if(Securite::verificationAccess()){
-        Securite::genereCookiePassword();
-        $title = "Page de gestion des news";
-        $description = "Page de gestion des news";
-        
-        $typeActualites = getTypesActualite();
-        
-        require_once "views/back/adminNews.view.php";
-    } else {
-        throw new Exception("Vous n'avez pas le droit d'accéder à cette page");
-    }
+    getPageNewsAdmin("views/back/adminNewsAjout.view.php",$alert,$alertType);
 
-    if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true"){
-        session_destroy();
-        header("Location: accueil");
+}
+function getPageNewsAdminModif(){
+    $alert = "";
+    $alertType="";
+    $data = [];
+    if(isset($_POST['typeActu']) && (int)$_POST['etape']>=2){
+        $typeActu = Securite::secureHTML($_POST['typeActu']);
+        $data['actualites'] = getActualiteFromBD((int) $typeActu);
     }
+    getPageNewsAdmin("views/back/adminNewsModif.view.php",$alert,$alertType,$data);
+}
+function getPageNewsAdminSuppr() {
+    $alert ="";
+    $alertType ="";
+   
+    getPageNewsAdmin("views/back/adminNewsSuppr.view.php");
+
 }

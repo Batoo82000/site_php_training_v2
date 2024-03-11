@@ -4,9 +4,6 @@ require_once "controllers/frontend.controller.php";
 require_once "controllers/backend.controller.php";
 require_once "config/Securite.class.php";
 
-// $hash = password_hash("test", PASSWORD_DEFAULT);
-// echo $hash;
-
 try {
     if(isset($_GET['page']) && !empty($_GET['page'])){
         $page = Securite::secureHTML($_GET['page']);
@@ -46,6 +43,12 @@ try {
             case "genererPensionnaireAdmin" : getPagePensionnaireAdmin();
             break;
             case "genererNewsAdmin" : getPageNewsAdmin();
+            break;
+            case "genererNewsAdminAjout" : getPageNewsAdminAjout();
+            break;
+            case "genererNewsAdminModif" : getPageNewsAdminModif();
+            break;
+            case "genererNewsAdminSuppr" : getPageNewsAdminSuppr();
             break;
             case "error301" :
             case "error302" :
